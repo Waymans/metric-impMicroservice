@@ -58,18 +58,19 @@
       </p>
     </div>
     <!-- Your web-app is https, so your scripts need to be too -->
-    <script src="https://code.jquery.com/jquery-2.2.1.min.js"
-            integrity="sha256-gvQgAFzTH6trSrAWoH1iPo9Xc96QxSZ3feW6kem+O00="
-            crossorigin="anonymous"></script>
+    <script
+			  src="https://code.jquery.com/jquery-3.3.1.min.js"
+			  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+			  crossorigin="anonymous"></script>
     <script>
-      document.getElementById('convertForm').addEventListener('submit', (e) => {
+      $('#convertForm')[0].addEventListener('submit', (e) => {
         e.preventDefault();
-        const input = document.getElementById('convertField').value;
+        const input = $('#convertField')[0].value;
         fetch(`/api/convert?input=${input}`)
           .then(res=>res.json())
           .then(res=>{
-            document.getElementById('jsonResult').innerHTML = JSON.stringify(res, null, ' ');
-            document.getElementById('result').innerHTML = res.string || res;
+            $('#jsonResult')[0].innerHTML = JSON.stringify(res, null, ' ');
+            $('#result')[0].innerHTML = res.string || res;
           })
           .catch(err=>{throw err});
       });
